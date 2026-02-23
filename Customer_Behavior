@@ -1,0 +1,24 @@
+# Convert Python file to CSV file
+
+import pandas as pd
+
+from sqlalchemy import create_engine
+from urllib.parse import quote_plus
+
+server = "localhost\\SQLEXPRESS"
+database = "customer_behavior"
+
+username = r"DESKTOP-GPKHQ7K/srika"
+password = "PS9381p@"
+
+connection_string = (
+    "DRIVER={ODBC Driver 17 for SQL Server};"
+    f"SERVER={server};"
+    f"DATABASE={database};"
+    f"UID={username};"
+    f"PWD={password};"
+)
+
+engine = create_engine(
+    "mssql+pyodbc:///?odbc_connect=" + quote_plus(connection_string)
+)
